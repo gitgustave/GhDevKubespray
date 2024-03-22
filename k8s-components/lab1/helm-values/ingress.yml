@@ -234,12 +234,21 @@ controller:
   minReadySeconds: 0
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-  ##
-  tolerations: []
+  #############################
+  #tolerations: []
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"
   #    effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
+
+##############  ENABLE TOLERATION
+  tolerations: 
+    - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  
 
   # -- Affinity and anti-affinity rules for server scheduling to nodes
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
@@ -812,7 +821,12 @@ controller:
         enabled: false
       nodeSelector:
         kubernetes.io/os: linux
-      tolerations: []
+      #tolerations: []
+      tolerations: 
+        - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       # -- Labels to be added to patch job resources
       labels: {}
       # -- Security context for secret creation & webhook patch pods
@@ -988,11 +1002,18 @@ defaultBackend:
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
-  tolerations: []
+  #tolerations: []
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"
   #    effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
+
+  tolerations: 
+    - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
 
   affinity: {}
   # -- Security context for default backend pods
