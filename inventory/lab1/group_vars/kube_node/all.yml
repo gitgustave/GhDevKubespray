@@ -2,4 +2,4 @@
 node_labels:
   node-role.kubernetes.io/worker: "worker-node"
 node_taints:
-  - "default-pool=true:NoSchedule:"
+  - "default-pool=true:NoSchedule"
