@@ -210,7 +210,9 @@ controller:
   #         name: secret-resource
 
   # -- Use a `DaemonSet` or `Deployment`
-  kind: Deployment
+  #kind: Deployment
+  kind: DaemonSet # change Deployment to DaemonSet to have at least one ingress-nginx run in each control-plane node
+
   # -- Annotations to be added to the controller Deployment or DaemonSet
   ##
   annotations: {}
