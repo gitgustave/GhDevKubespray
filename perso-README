@@ -13,3 +13,9 @@ Ici, je details mon travail.
     helm install public -f k8s-components/lab1/helm-values/ingress.yml ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
 
         helm upgrade public -f k8s-components/lab1/helm-values/ingress.yml ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace   (to upgrade helm resource)
+2- Add Prometheus, Grafana, NodeExporter. 
+   This chart combien all those tree (3) together instead to add them one bye one
+go to  (Or clone)
+  https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/Chart.yaml
+. copy helm-charts/charts/kube-prometheus-stack/ to a new dir call chart inside GDevKubespray folder
+ free to delete cloned repo
