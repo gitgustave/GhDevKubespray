@@ -11,3 +11,5 @@ Ici, je details mon travail.
  . To install helm: 
  
     helm install public -f k8s-components/lab1/helm-values/ingress.yml ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
+
+        helm upgrade public -f k8s-components/lab1/helm-values/ingress.yml ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace   (to upgrade helm resource)
