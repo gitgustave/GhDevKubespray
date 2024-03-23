@@ -245,10 +245,15 @@ controller:
 
 ##############  ENABLE TOLERATION
   tolerations: 
-    - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+    - key: "node-role.kubernetes.io/control-plane"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
       operator: "Equal"
-      value: "true"
+      value: ""
       effect: "NoSchedule"
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: ""
+      effect: "NoSchedule"
+    
 
   
 
@@ -825,9 +830,13 @@ controller:
         kubernetes.io/os: linux
       #tolerations: []
       tolerations: 
-        - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+        - key: "node-role.kubernetes.io/control-plane"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
           operator: "Equal"
-          value: "true"
+          value: ""
+          effect: "NoSchedule"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Equal"
+          value: ""
           effect: "NoSchedule"
       # -- Labels to be added to patch job resources
       labels: {}
@@ -1011,9 +1020,13 @@ defaultBackend:
   #    effect: "NoSchedule|PreferNoSchedule|NoExecute(1.6 only)"
 
   tolerations: 
-    - key: "default-pool"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
+    - key: "node-role.kubernetes.io/control-plane"  # this has to match the node_taints in inventory/lab1/group_vars/kube_node/all.yml
       operator: "Equal"
-      value: "true"
+      value: ""
+      effect: "NoSchedule"
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: ""
       effect: "NoSchedule"
 
 
