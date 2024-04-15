@@ -197,12 +197,12 @@ metallb_config:
   address_pools:
     primary:
       ip_range:
-        - "10.5.0.0/16"
+        - "192.168.1.200-192.168.1.210"
       auto_assign: true
-    pool1:
-      ip_range:
-        - "10.6.0.0/16"
-      auto_assign: true
+   # pool1:
+   #   ip_range:
+   #     - "10.6.0.0/16"
+   #   auto_assign: true
 #     pool2:
 #       ip_range:
 #         - 10.10.0.0/16
