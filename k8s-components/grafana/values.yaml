@@ -76,8 +76,6 @@ image:
 
   
   pullSecrets: []
-  #   - myRegistrKeySecretName
-
 testFramework:
   enabled: true
   image:
@@ -172,6 +170,12 @@ service:
   portName: service
   # Adds the appProtocol field to the service. This allows to work with istio protocol selection. Ex: "http" or "tcp"
   appProtocol: ""
+  ######  I ADD THIS ######
+  tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Equal"
+        value: ""
+        effect: "NoSchedule"
 
 serviceMonitor:
 
@@ -239,7 +243,13 @@ resources: {}
 
 nodeSelector: {}
 
-tolerations: []
+#tolerations: []
+############ I ASS THIS #########
+tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Equal"
+        value: ""
+        effect: "NoSchedule"
 
 affinity: {}
 
