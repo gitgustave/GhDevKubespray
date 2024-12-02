@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-sc
+provisioner: csi.vsphere.vmware.com
+parameters:
+  server: 10.0.0.206
+  reclaimPolicy: Retain
+  path: /mnt/nfs_share/
+  readOnly: "false"
