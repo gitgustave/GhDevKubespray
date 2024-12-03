@@ -80,7 +80,7 @@ elasticsearch:
   bootstrapChecks: true
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   externalPort: 9000
   internalPort: 9000
   labels:
@@ -369,10 +369,12 @@ resources:
     ephemeral-storage: 1536M
 
 persistence:
+  #enabled: true
   enabled: false
   ## Set annotations on pvc
   annotations: {}
   storageClass: 
+  #accessMode: ReadWriteOnce # I change this ##
   accessMode: ReadWriteOnce
   size: 5Gi
   uid: 1000
@@ -434,8 +436,8 @@ postgresql:
       memory: 200Mi
   persistence:
     enabled: true
-    accessMode: ReadWriteOnce
-    size: 20Gi
+    accessMode: ReadWriteMany
+    size: 1Gi
     storageClass: 
   securityContext:
     enabled: true

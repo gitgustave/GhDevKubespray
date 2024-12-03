@@ -31,3 +31,22 @@ spec:
   resources:
     requests:
       storage: 1G
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sonarqube-pv
+spec:
+  capacity: 
+    storage: 10Gi
+  storageClassName: ""
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+     name: data-sonarqube-postgresql-0
+     namespace: sonarqube
+  nfs:
+    path: /mnt/nfs_share/
+    server: 10.0.0.206
+  persistentVolumeReclaimPolicy: Retain
